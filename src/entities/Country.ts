@@ -20,15 +20,21 @@ export class Country {
     @Field()
     name: string;
 
-    @Column({ unique: true })
+    @Column()
     @Field()
     code: string;
 
-    @Column({unique: true})
+    @Column()
     @Field()
-    emoji: string
-}
+    emoji: string;
 
+    @Column({nullable: true})
+    @Field({nullable: true})
+    continentCode: string;
+
+
+    
+}
 
 
 @InputType()
@@ -37,13 +43,15 @@ export class CountryInput {
     @Field()
     name: string;
 
-    @Column({ unique: true })
     @Field()
     code: string;
 
-    @Column({unique: true})
     @Field()
     emoji: string
+
+    @Field({nullable: true})
+    continentCode: string;
+
 
 }
 

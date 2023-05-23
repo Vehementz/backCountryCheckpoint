@@ -13,12 +13,19 @@ export class CountriesResolver {
         code = code.toUpperCase();
         let name = data.name;
         name = name.charAt(0).toUpperCase() + name.slice(1);
+        
+        let continentCode: string | undefined;
+        if (data.continentCode !== undefined) {
+            continentCode = data.continentCode.toUpperCase();
+        }
 
         const emoji = data.emoji;
         const newCountry = await datasource.getRepository(Country).save({
             name,
             code,
-            emoji
+            emoji,
+            continentCode
+            
 
         });
         return newCountry;
