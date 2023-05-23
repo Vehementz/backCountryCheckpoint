@@ -5,7 +5,6 @@ import datasource from "../utils";
 
 @Resolver()
 export class CountriesResolver {
-  @Authorized()
   @Mutation(() => Country)
   async createCountry(
     @Arg("data", () => CountryInput) data: CountryInput

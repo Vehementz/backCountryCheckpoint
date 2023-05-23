@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
 import datasource from "./utils";
 import { buildSchema } from "type-graphql";
-import { authChecker } from "./auth";
+// import { authChecker } from "./auth";
 import { Country } from "./entities/Country";
 import { CountriesResolver } from "./resolvers/Countries";
 
@@ -13,9 +13,10 @@ async function bootstrap(): Promise<void> {
   const schema = await buildSchema({
     resolvers: [
       CountriesResolver
-      ...(process.env.DEV ? [Dev] : []),
+      // ...(process.env.DEV ? [Dev] : [])
+      ,
     ],
-    authChecker,
+    // authChecker,
   });
 
   // Create the GraphQL server
@@ -24,13 +25,13 @@ async function bootstrap(): Promise<void> {
     cors: true,
     context: ({ req }) => {
       // Get the user token from the headers.
-      const authorization: string | undefined = req?.headers?.authorization;
+      // const authorization: string | undefined = req?.headers?.authorization;
 
-      if (authorization) {
-        // Bearer ...jwt
-        const token = authorization.split(" ").pop();
-        return { token };
-      }
+      // if (authorization) {
+      //   // Bearer ...jwt
+      //   const token = authorization.split(" ").pop();
+      //   return { token };
+      // }
       // Add the user to the context
       return { token: null };
     },
