@@ -13,7 +13,7 @@ import {
 @ObjectType()
 export class Country {
     @PrimaryGeneratedColumn()
-    @Field(() => ID)
+    @Field()
     id: number;
 
     @Column({ unique: true })
@@ -33,7 +33,7 @@ export class Country {
 
 @InputType()
 export class CountryInput {
-    @Column({ unique: true })
+
     @Field()
     name: string;
 
@@ -44,5 +44,17 @@ export class CountryInput {
     @Column({unique: true})
     @Field()
     emoji: string
+
+}
+
+
+
+@InputType()
+export class CountryDelete {
+
+
+    @Column({ unique: true })
+    @Field()
+    code: string;
 
 }
