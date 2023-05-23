@@ -1,46 +1,46 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  OneToOne,
-} from "typeorm";
-import { ObjectType, Field, ID, InputType } from "type-graphql";
-import { IsUrl } from "class-validator";
-import { User } from "./User";
-import { Post } from "./Post";
+// import {
+//   Entity,
+//   Column,
+//   PrimaryGeneratedColumn,
+//   ManyToOne,
+//   OneToOne,
+// } from "typeorm";
+// import { ObjectType, Field, ID, InputType } from "type-graphql";
+// import { IsUrl } from "class-validator";
+// import { User } from "./User";
+// import { Post } from "./Post";
 
-@Entity()
-@ObjectType()
-export class Image {
-  @PrimaryGeneratedColumn()
-  @Field(() => ID)
-  id: number;
+// @Entity()
+// @ObjectType()
+// export class Image {
+//   @PrimaryGeneratedColumn()
+//   @Field(() => ID)
+//   id: number;
 
-  @Column()
-  @Field()
-  url: string;
+//   @Column()
+//   @Field()
+//   url: string;
 
-  @OneToOne(() => Post, (post) => post.image)
-  @Field(() => Post)
-  post: Post;
+//   @OneToOne(() => Post, (post) => post.image)
+//   @Field(() => Post)
+//   post: Post;
 
-  @ManyToOne(() => User)
-  @Field(() => User, { nullable: true })
-  createdBy: User;
+//   @ManyToOne(() => User)
+//   @Field(() => User, { nullable: true })
+//   createdBy: User;
 
-  @Column()
-  @Field(() => Date)
-  createdAt: Date;
-}
+//   @Column()
+//   @Field(() => Date)
+//   createdAt: Date;
+// }
 
-@InputType()
-export class ImageInput {
-  @Field()
-  @IsUrl()
-  url: string;
+// @InputType()
+// export class ImageInput {
+//   @Field()
+//   @IsUrl()
+//   url: string;
 
-  // these fields are not available for GraphQL
-  createdAt: Date;
-  createdBy: User;
-}
+//   // these fields are not available for GraphQL
+//   createdAt: Date;
+//   createdBy: User;
+// }
