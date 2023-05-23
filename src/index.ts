@@ -2,13 +2,9 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
 import datasource from "./utils";
 import { buildSchema } from "type-graphql";
-import { UsersResolver } from "./resolvers/Users";
 import { authChecker } from "./auth";
-import { CommentsResolver } from "./resolvers/Comments";
-import { PostsResolver } from "./resolvers/Posts";
-import { ImagesResolver } from "./resolvers/Images";
-import { User } from "./entities/User";
-import { Dev } from "./resolvers/Dev";
+import { Country } from "./entities/Country";
+import { CountriesResolver } from "./resolvers/Countries";
 
 const PORT = 5000;
 
@@ -16,10 +12,7 @@ async function bootstrap(): Promise<void> {
   // ... Building schema here
   const schema = await buildSchema({
     resolvers: [
-      UsersResolver,
-      CommentsResolver,
-      PostsResolver,
-      ImagesResolver,
+      CountriesResolver
       ...(process.env.DEV ? [Dev] : []),
     ],
     authChecker,

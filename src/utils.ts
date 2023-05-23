@@ -1,18 +1,16 @@
-import { User } from "./entities/User";
 import { DataSource } from "typeorm";
-import { Comment } from "./entities/Comment";
-import { Post } from "./entities/Post";
-import { Image } from "./entities/Image";
+import { Country } from "./entities/Country";
+
 
 const datasource = new DataSource({
   type: "postgres",
   host: process.env.DB_HOST,
   port: 5432,
   username: "postgres",
-  password: "supersecret",
+  password: "countrysecret",
   database: "postgres",
   synchronize: true,
-  entities: [User, Comment, Post, Image],
+  entities: [Country],
   logging: ["query", "error"],
 });
 
