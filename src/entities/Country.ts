@@ -5,8 +5,7 @@ import {
     ID,
     InputType,
 } from "type-graphql";
-import { IsEmail, Length } from "class-validator";
-
+// import { IsEmail, Length } from "class-validator";
 
 
 
@@ -25,13 +24,12 @@ export class Country {
     @Field()
     code: string;
 
-
-    @Column()
+    @Column({unique: true})
     @Field()
     emoji: string
-
-
 }
+
+
 
 @InputType()
 export class CountryInput {
@@ -43,8 +41,7 @@ export class CountryInput {
     @Field()
     code: string;
 
-
-    @Column()
+    @Column({unique: true})
     @Field()
     emoji: string
 
