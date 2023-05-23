@@ -1,6 +1,6 @@
 
 import { Resolver, Mutation, Arg, Query, ID } from "type-graphql";
-import { Country, CountryInput, CountryDelete } from "../entities/Country";
+import { Country, CountryInput } from "../entities/Country";
 import datasource from "../utils";
 
 @Resolver()
@@ -44,6 +44,14 @@ export class CountriesResolver {
         return countries
     }
 
+
+
+    @Query(() => [Country])
+    async countriesByContinent(
+        @Arg("continentCode") continentCode: string): Promise<Country[]> {
+        const countries = await datasource.getRepository(Country).find({where: { continentCode: continentCode.toUpperCase() }});
+        return countries
+    }
 
 
     @Mutation(() => Boolean, { nullable: true })
